@@ -6,17 +6,28 @@ const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 /* Auth related functions */
 
 export function getUser() {
+    return client.auth.user();
+
     // > Part A: supabase get user
 }
 
 export async function signUpUser(email, password) {
-    // > Part A: supabase signup
+    return await client.auth.signUp({
+        email,
+        password,
+        // > Part A: supabase signup
+    });
 }
 
 export async function signInUser(email, password) {
-    // > Part A: supabase signin
+    return await client.auth.signIn({
+        email,
+        password,
+        // > Part A: supabase signin
+    });
 }
 
 export async function signOutUser() {
+    return await client.auth.signOut();
     // > Part B: supabase signout
 }
